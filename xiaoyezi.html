@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤ 表白页面 ❤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #ffebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Arial", sans-serif;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #d81b60;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.5rem;
+            color: #880e4f;
+            margin-top: 10px;
+        }
+        .heart-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .heart-btn:hover {
+            background: #c2185b;
+            transform: scale(1.1);
+        }
+        /* 背景爱心动画 */
+        .heart {
+            position: absolute;
+            color: #ff1744;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 主要内容 -->
+    <div class="container">
+        <h1>❤️ 小叶子，喜欢你哦！❤️</h1>
+        <p>世界上最美的风景，是遇见你~</p>
+        <button class="heart-btn" onclick="showHearts()">点我一下 ❤️</button>
+    </div>
+
+    <!-- 背景动画爱心 -->
+    <script>
+        function showHearts() {
+            for (let i = 0; i < 10; i++) {
+                createHeart();
+            }
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.className = "heart";
+            document.body.appendChild(heart);
+
+            let x = Math.random() * window.innerWidth;
+            let duration = Math.random() * 2 + 3;
+
+            heart.style.left = x + "px";
+            heart.style.animationDuration = duration + "s";
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // 自动生成爱心
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>
